@@ -94,14 +94,23 @@ public class BirthdaySimulation
         System.out.println("Date: " + number);
         return number;
     }
-
+//    (1)(e) new createMeeting method.
+    public void createMeeting(int numAttendees){
+        bdays.clear();
+        BirthdaySimulation birthdaySimulation = new BirthdaySimulation();
+        String bday = "" + numAttendees + " " + birthdaySimulation.ranMonth();
+        bdays.add(bday);
+        System.out.println(bday);
+    }
     public BirthdaySimulation(){
         this.bdays = new ArrayList<String>();
     }
 
     public static void main(String[] args) {
         BirthdaySimulation birthdaySimulation = new BirthdaySimulation();
-        birthdaySimulation.ranDateInMonth("March");
+        birthdaySimulation.createMeeting(3);
+        int date = birthdaySimulation.ranDateInMonth("February");
+        System.out.println(date);
 
     }
 
