@@ -81,7 +81,6 @@ public class BirthdaySimulation {
         int number = rand.nextInt();
 
         if (aMonth == "February") {
-
             if (x == 0) {
                 return y;
             } else {
@@ -119,7 +118,8 @@ public class BirthdaySimulation {
     }
 
     // (1)(f) new foundMatch method.
-    public boolean foundMatch() {
+    public boolean foundMatch()
+    {
         boolean bool = false;
         for (int i = 0; i < bdays.size(); i++) {
             for (int j = 1; j < bdays.size(); j++) {
@@ -130,6 +130,23 @@ public class BirthdaySimulation {
         }
         return bool;
     }
+    // (1)(g) new runSimulation method.
+    public double runSimulation(int numAttendees)
+    {
+        BirthdaySimulation birthdaySimulation = new BirthdaySimulation();
+        int count = 0;
+        bdays = new ArrayList<>();
+        for (int i = 0; i < 10000; i++) {
+            birthdaySimulation.createMeeting(numAttendees);
+            final boolean b = birthdaySimulation.foundMatch();
+            if (numAttendees>=2 && b) count++;
+            bdays.clear();
+        }
+        double time = (count / 10000.0) * 100;
+        return time;
+    }
+
+
     public BirthdaySimulation() {
         this.bdays = new ArrayList<String>();
     }
