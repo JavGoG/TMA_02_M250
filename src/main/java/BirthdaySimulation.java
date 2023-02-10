@@ -112,8 +112,12 @@ public class BirthdaySimulation {
     public void createMeeting(int numAttendees) {
         bdays.clear();
         BirthdaySimulation birthdaySimulation = new BirthdaySimulation();
-        String bday = "" + numAttendees + " " + birthdaySimulation.ranMonth();
-        bdays.add(bday);
+        String bday = "";
+        for (int i = 0; i < numAttendees; i++) {
+            String month = birthdaySimulation.ranMonth();
+            bday = "" + birthdaySimulation.ranDateInMonth(month) + " " + birthdaySimulation.ranMonth();
+            bdays.add(bday);
+        }
         System.out.println(bday);
     }
 
@@ -153,9 +157,13 @@ public class BirthdaySimulation {
 
     public static void main(String[] args) {
         BirthdaySimulation birthdaySimulation = new BirthdaySimulation();
-        birthdaySimulation.createMeeting(3);
-        int date = birthdaySimulation.ranDateInMonth("February");
-        System.out.println(date);
+//        birthdaySimulation.runSimulation(3);
+        birthdaySimulation.createMeeting(5);
+        System.out.println(birthdaySimulation.bdays);
+//        int date = birthdaySimulation.ranDateInMonth("February");
+//        System.out.println(birthdaySimulation.runSimulation(3));
+//        System.out.println(birthdaySimulation.bdays);
+
 
     }
 
