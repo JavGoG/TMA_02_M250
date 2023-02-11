@@ -73,38 +73,71 @@ public class BirthdaySimulation {
 
     //    (1)(d) new ranDateInMonth method.
     public int ranDateInMonth(String aMonth) {
-
+        int min = 1;
+        int max31 = 31;
+        int max30 = 30;
+        int max29 = 29;
+        int max28 = 28;
         Random rand = new Random();
-        int x = rand.nextInt(4);
-        int y = rand.nextInt(30);
-        int z = rand.nextInt(29);
+        int zeroToThree = rand.nextInt(4);
+        int oneToThirtyOne = rand.nextInt(max31 - min + 1) + min;
+        int oneToThirty = rand.nextInt(max30 - min + 1) + min;
+        int oneToTwentyNine = rand.nextInt(max29 - min + 1) + min;
+        int oneToTwentyEight = rand.nextInt(max28 - min + 1) + min;
         int number = rand.nextInt();
+        ArrayList<String> months = new ArrayList<>();
+        months.add("January");
+        months.add("February");
+        months.add("March");
+        months.add("April");
+        months.add("May");
+        months.add("June");
+        months.add("July");
+        months.add("August");
+        months.add("September");
+        months.add("October");
+        months.add("November");
+        months.add("December");
+/*
+    ArrayList method contains is 'ignoreCase' by default.
+ */
+        if (months.contains(aMonth)) {
+            switch (aMonth) {
+                case "January":
+                case "March":
+                case "May":
+                case "July":
+                case "August":
+                case "October":
+                case "December":
+                    number = oneToThirtyOne;
+                    break;
+                case "April":
+                case "June":
+                case "September":
+                case "November":
+                    number = oneToThirty;
+                    break;
+                case "February":
+                    if (zeroToThree == 0) {
+                        return number = oneToTwentyNine;
+                    } else {
+                        return number = oneToTwentyEight;
+                    }
+            }
+            System.out.println("Date: " + number);
+            return number;
 
-        if (aMonth == "February") {
-            if (x == 0) {
-                return y;
-            } else {
-                return z;
+        }else{
+            System.out.println(aMonth + " is not a Month");
+            try{
+                number = Integer.valueOf(aMonth);
+                System.out.println(number);
+            }
+            catch (NumberFormatException ex){
+                ex.printStackTrace();
             }
         }
-        switch (aMonth) {
-            case "January":
-            case "March":
-            case "May":
-            case "July":
-            case "September":
-            case "November":
-                number = rand.nextInt(32);
-                break;
-            case "April":
-            case "June":
-            case "August":
-            case "October":
-            case "December":
-                number = rand.nextInt(31);
-                break;
-        }
-        System.out.println("Date: " + number);
         return number;
     }
 
@@ -127,11 +160,11 @@ public class BirthdaySimulation {
         boolean bool = false;
         for (int i = 0; i < bdays.size(); i++) {
             for (int j = 1; j < bdays.size(); j++) {
-                if (bdays.get(i) == bdays.get(j)) {
-                    return !bool;
+                if(i==j) continue;
+                boolean match = bdays.get(i).equals(bdays.get(j));
+                if (match) return  !bool;
                 }
             }
-        }
         return bool;
     }
     // (1)(g) new runSimulation method.
@@ -147,6 +180,8 @@ public class BirthdaySimulation {
             bdays.clear();
         }
         double time = (count / 10000.0) * 100;
+        System.out.println(count);
+        System.out.println(time);
         return time;
     }
 
@@ -158,11 +193,11 @@ public class BirthdaySimulation {
     public static void main(String[] args) {
         BirthdaySimulation birthdaySimulation = new BirthdaySimulation();
 //        birthdaySimulation.runSimulation(3);
-        birthdaySimulation.createMeeting(5);
+//       birthdaySimulation.createMeeting(5);
         System.out.println(birthdaySimulation.bdays);
-//        int date = birthdaySimulation.ranDateInMonth("February");
-//        System.out.println(birthdaySimulation.runSimulation(3));
-//        System.out.println(birthdaySimulation.bdays);
+        int date = birthdaySimulation.ranDateInMonth("februAry");
+        System.out.println(birthdaySimulation.runSimulation(5));
+//       System.out.println(birthdaySimulation.bdays);
 
 
     }
