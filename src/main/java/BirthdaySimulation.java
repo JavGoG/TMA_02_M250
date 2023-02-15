@@ -125,7 +125,7 @@ public class BirthdaySimulation {
                         return number = oneToTwentyEight;
                     }
             }
-            System.out.println("Date: " + number);
+//            System.out.println("Date: " + number);
             return number;
 
         }else{
@@ -151,7 +151,7 @@ public class BirthdaySimulation {
             bday = "" + birthdaySimulation.ranDateInMonth(month) + " " + birthdaySimulation.ranMonth();
             bdays.add(bday);
         }
-        System.out.println(bday);
+//        System.out.println(bday);
     }
 
     // (1)(f) new foundMatch method.
@@ -180,8 +180,8 @@ public class BirthdaySimulation {
             bdays.clear();
         }
         double time = (count / 10000.0) * 100;
-        System.out.println(count);
-        System.out.println(time);
+//        System.out.println(count);
+//        System.out.println(time);
         return time;
     }
 
@@ -194,9 +194,9 @@ public class BirthdaySimulation {
         BirthdaySimulation birthdaySimulation = new BirthdaySimulation();
 //        birthdaySimulation.runSimulation(3);
 //       birthdaySimulation.createMeeting(5);
+        int date = birthdaySimulation.ranDateInMonth("fbruAry");
         System.out.println(birthdaySimulation.bdays);
-        int date = birthdaySimulation.ranDateInMonth("februAry");
-        System.out.println(birthdaySimulation.runSimulation(5));
+       System.out.println(birthdaySimulation.runSimulation(2));
 //       System.out.println(birthdaySimulation.bdays);
 
 
